@@ -1,7 +1,7 @@
-﻿namespace {namespace}
+﻿namespace {namespace};
+
+public enum {itemname}
 {
-    public enum {itemname}
-    {
-        $
-    }
+    $
 }
+

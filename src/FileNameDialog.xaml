@@ -4,53 +4,77 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MadsKristensen.AddAnyFile"
-        mc:Ignorable="d"        
-        Title="Add New File" Height="180" Width="520" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen"
-        local:VsTheme.UseVsTheme="True">
+        mc:Ignorable="d"
+        Title="Add New Folder/File VS 2022"
+        Height="200"
+        Width="660"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterScreen"
+        local:VsTheme.UseVsTheme="True"
+        Loaded="Window_Loaded">
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="25*" />
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="25*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="70*" />
+            <RowDefinition Height="30*" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="0" Grid.Row="0"
-               x:Name="lblFolder" 
-               HorizontalContentAlignment="Right"
-               VerticalContentAlignment="Center"
-               Width="auto"
-               Height="34"
-               FontSize="14" 
-               FontWeight="Bold"  
-               Content="Folder/File Name:" />
-        <TextBox Grid.Column="1" Grid.Row="0"
-                 x:Name="txtName"
-                 Width="240"
-                 Height="34"
-                 FontSize="14"
-                 FontWeight="SemiBold"
+        <Label x:Name="lblFileFolder"
+               Grid.Column="0"
+               Grid.Row="0"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Center"
+               Content="Folder/File"
+               FontFamily="Leelawadee UI,Segoe UI"
+               FontSize="14" />
+
+        <TextBox x:Name="txtFileName"
+                 Grid.Column="1"
+                 Grid.Row="0"
+                 Width="300"
+                 Height="30"
+                 VerticalContentAlignment="Center"
                  HorizontalAlignment="Center"
-                 VerticalAlignment="Center" 
-                 TextAlignment="Left" 
-                 Padding="5,6,2,3" />
-        <Button Grid.Column="2" Grid.Row="0" 
-                x:Name="btnCreate"
-                Width="75" 
-                Height="34"
-                Content="Add file"
-                FontSize="13"
-                FontWeight="Bold"
-                Background="Transparent"
+                 VerticalAlignment="Center"
+                 Text="some test text.cs"
+                 FontFamily="Leelawadee UI,Segoe UI"
+                 FontSize="14"
+                 FontWeight="Medium"
+                 PreviewKeyDown="txtFileName_PreviewKeyDown" />
+
+        <Button x:Name="btnAddNew"
+                Grid.Column="2"
+                Grid.Row="0"
+                Height="30"
+                Width="80"
                 BorderBrush="DarkGray"
                 BorderThickness="1"
-                Click="Button_Click"
-                IsDefault="True"
+                Background="Transparent"
+                VerticalAlignment="Center"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Center" />
-        <Label x:Name="lblTips" Grid.Column="1" Grid.Row="1" />
+                Content="Add New"
+                IsDefault="True"
+                IsEnabled="False"
+                FontFamily="Leelawadee UI,Segoe UI"
+                FontSize="14"
+                FontWeight="Medium"
+                Click="BtnAddNew_Click" />
+
+        <Label x:Name="lblTip"
+               FontFamily="Leelawadee UI,Segoe UI"
+               FontSize="11"
+               Foreground="#47C83C"
+               Grid.Column="0"
+               Grid.Row="1"
+               Grid.ColumnSpan="3"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Content="Tips and Tricks and other features about this extension!" />
     </Grid>
 </Window>

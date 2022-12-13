@@ -1,9 +1,9 @@
 ﻿using {mvcprojectnamespace};
 
-namespace {namespace}
+namespace {namespace};
+
+public class {itemname} : Controller
 {
-    public class {itemname} : Controller
-    {
-        $
-    }
+    $
 }
+
