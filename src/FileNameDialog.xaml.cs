@@ -11,7 +11,7 @@ namespace MadsKristensen.AddAnyFile
     public partial class FileNameDialog : Window
     {
         private const string ICON_PATH = "pack://application:,,,/AddAnyFile;component/Resources/icon.png";
-        private const string DEFAULT_TEXT = "enter folder(optional)/file with extension to add";
+        private const string DEFAULT_TEXT = "enter folder(optional)/file with extension";
 
         private static readonly String[] _tips = new String[] {
             "Tip: 'folder/file.ext' also creates a new folder for the file",
