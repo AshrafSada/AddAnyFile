@@ -262,7 +262,11 @@ namespace MadsKristensen.AddAnyFile
 			try
 			{
 				ThreadHelper.ThrowIfNotOnUIThread();
-				var reference = (project.Object as VSProject).References.Cast<Reference>().Where(x => x.Name == "Microsoft.AspNetCore.Mvc" || x.Name == "System.Web.Mvc").FirstOrDefault();
+				var reference = (project.Object as VSProject)
+					.References
+					.Cast<Reference>()
+					.Where(x => x.Name == "Microsoft.AspNetCore.Mvc" || x.Name == "System.Web.Mvc")
+					.FirstOrDefault();
 				return reference.Name;
 			}
 			catch

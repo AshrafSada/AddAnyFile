@@ -152,6 +152,10 @@ namespace MadsKristensen.AddAnyFile
 			{
 				return extension += "-controller";
 			}
+			else if (Regex.IsMatch(safeName, ".+Record$"))
+			{
+				return extension += "-record";
+			}
 
 			return extension;
 		}
