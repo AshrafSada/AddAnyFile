@@ -1,7 +1,5 @@
 ﻿namespace {namespace};
 
 public enum {itemname}
-{
-    $
+{$
 }
-

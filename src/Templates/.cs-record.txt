@@ -6,4 +6,4 @@ using System.Threading.Tasks;
 
 namespace {namespace};
 
-public record {itemname}();$
+public record {itemname}($);

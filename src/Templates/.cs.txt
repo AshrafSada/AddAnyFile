@@ -7,4 +7,5 @@ using System.Threading.Tasks;
 namespace {namespace};
 
 public class {itemname}
-{$}
+{$
+}

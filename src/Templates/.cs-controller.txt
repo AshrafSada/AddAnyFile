@@ -3,7 +3,5 @@
 namespace {namespace};
 
 public class {itemname} : Controller
-{
-    $
+{$
 }
-

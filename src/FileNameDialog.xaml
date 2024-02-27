@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Add New Folder/File VS 2022"
         Height="200"
-        Width="660"
+        Width="800"
         ResizeMode="NoResize"
         ShowInTaskbar="False"
         WindowStartupLocation="CenterScreen"
@@ -16,9 +16,9 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25*" />
-            <ColumnDefinition Width="50*" />
-            <ColumnDefinition Width="25*" />
+            <ColumnDefinition Width="137*" />
+            <ColumnDefinition Width="532*" />
+            <ColumnDefinition Width="131*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="70*" />
@@ -27,17 +27,15 @@
 
         <Label x:Name="lblFileFolder"
                Grid.Column="0"
-               Grid.Row="0"
-               HorizontalAlignment="Right"
+               HorizontalAlignment="Left"
                VerticalAlignment="Center"
                Content="Folder/File"
                FontFamily="Leelawadee UI,Segoe UI"
-               FontSize="14" />
+               FontSize="14" Height="29" Margin="52,0,0,0" Width="75" />
 
         <TextBox x:Name="txtFileName"
                  Grid.Column="1"
-                 Grid.Row="0"
-                 Width="300"
+                 Width="492"
                  Height="30"
                  VerticalContentAlignment="Center"
                  HorizontalAlignment="Center"
@@ -50,7 +48,6 @@
 
         <Button x:Name="btnAddNew"
                 Grid.Column="2"
-                Grid.Row="0"
                 Height="30"
                 Width="80"
                 BorderBrush="DarkGray"
@@ -70,11 +67,10 @@
                FontFamily="Leelawadee UI,Segoe UI"
                FontSize="11"
                Foreground="#47C83C"
-               Grid.Column="0"
+               Grid.Column="1"
                Grid.Row="1"
-               Grid.ColumnSpan="3"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
-               Content="Tips and Tricks and other features about this extension!" />
+               Content="Tips and Tricks and other features about this extension!" Height="25" Width="278" />
     </Grid>
 </Window>
