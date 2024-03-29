@@ -3,6 +3,6 @@
 	"name": "mypackage",
 	"private": true,
 	"devDependencies": {
-        $
+		$
 	}
 }

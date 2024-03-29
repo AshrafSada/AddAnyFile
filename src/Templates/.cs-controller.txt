@@ -2,6 +2,8 @@
 
 namespace {namespace};
 
-public class {itemname} : Controller
+[ApiController]
+[Route("api/[controller]")]
+public class {itemname} : ControllerBase
 {$
 }
