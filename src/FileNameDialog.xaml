@@ -16,8 +16,8 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="137*" />
-            <ColumnDefinition Width="532*" />
+            <ColumnDefinition Width="53*" />
+            <ColumnDefinition Width="616*" />
             <ColumnDefinition Width="131*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -26,25 +26,25 @@
         </Grid.RowDefinitions>
 
         <Label x:Name="lblFileFolder"
-               Grid.Column="0"
+               Grid.Column="1"
                HorizontalAlignment="Left"
-               VerticalAlignment="Center"
+               VerticalAlignment="Top"
                Content="Folder/File"
                FontFamily="Leelawadee UI,Segoe UI"
-               FontSize="14" Height="29" Margin="52,0,0,0" Width="75" />
+               FontSize="14" Height="29" Margin="20,23,0,0" Width="534" RenderTransformOrigin="0.537,1.035" />
 
         <TextBox x:Name="txtFileName"
                  Grid.Column="1"
-                 Width="492"
+                 Width="537"
                  Height="30"
                  VerticalContentAlignment="Center"
-                 HorizontalAlignment="Center"
-                 VerticalAlignment="Center"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
                  Text="some test text.cs"
                  FontFamily="Leelawadee UI,Segoe UI"
                  FontSize="14"
                  FontWeight="Medium"
-                 PreviewKeyDown="txtFileName_PreviewKeyDown" />
+                 PreviewKeyDown="txtFileName_PreviewKeyDown" Margin="17,64,0,0" />
 
         <Button x:Name="btnAddNew"
                 Grid.Column="2"
@@ -53,7 +53,7 @@
                 BorderBrush="DarkGray"
                 BorderThickness="1"
                 Background="Transparent"
-                VerticalAlignment="Center"
+                VerticalAlignment="Top"
                 HorizontalAlignment="Left"
                 Content="Add New"
                 IsDefault="True"
@@ -61,7 +61,7 @@
                 FontFamily="Leelawadee UI,Segoe UI"
                 FontSize="14"
                 FontWeight="Medium"
-                Click="BtnAddNew_Click" />
+                Click="BtnAddNew_Click" Margin="0,64,0,0" />
 
         <Label x:Name="lblTip"
                FontFamily="Leelawadee UI,Segoe UI"
