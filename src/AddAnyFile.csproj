@@ -209,12 +209,12 @@
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VSSDK.BuildTools">
-      <Version>17.11.435</Version>
+      <Version>17.12.2069</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="System.Text.Json">
-      <Version>8.0.4</Version>
+      <Version>8.0.5</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
