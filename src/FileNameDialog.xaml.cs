@@ -11,10 +11,10 @@ namespace MadsKristensen.AddAnyFile
     public partial class FileNameDialog : Window
     {
         private const string ICON_PATH = "pack://application:,,,/AddAnyFile;component/Resources/icon.png";
-        private const string DEFAULT_TEXT = "enter folder(optional)/file with extension";
+        private const string DEFAULT_TEXT = "Folder Name (optional)/File Name and Extension";
 
         private static readonly String[] _tips = new String[] {
-            "Tip: 'folder/file.ext' also creates a new folder for the file",
+            "Tip: 'folder/file.EXT' also creates a new folder for the file",
             "Tip: You can create files starting with a dot, like '.gitignore'",
             "Tip: You can create files without file extensions, like 'LICENSE'",
             "Tip: Create folder by ending the name with a forward slash",
