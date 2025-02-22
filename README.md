@@ -41,7 +41,7 @@ The templates inside this folder will be used alongside the default ones.
 
 #### Keywords
 Inside the template those keywords can be used:
-- `{itemname}`: The name of the file without the extension
+- `{itemName}`: The name of the file without the extension
 - `{namespace}`: The namespace
 
 #### Types of template

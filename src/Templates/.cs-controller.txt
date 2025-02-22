@@ -1,9 +1,9 @@
-﻿using {mvcprojectnamespace};
+﻿using {mvcProjectNamespace};
 
 namespace {namespace};
 
 [ApiController]
 [Route("api/[controller]")]
-public class {itemname} : ControllerBase
+public class {itemName} : ControllerBase
 {$
 }

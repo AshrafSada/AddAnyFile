@@ -8,10 +8,20 @@ using Microsoft.VisualStudio.Shell;
 
 namespace MadsKristensen.AddAnyFile
 {
+    /// <summary>
+    /// Represents the target location for creating a new item within a Visual Studio solution.
+    /// </summary>
     public class NewItemTarget
     {
+        /// <summary>
+        /// Creates a new instance of <see cref="NewItemTarget"/> based on the current context in
+        /// Visual Studio.
+        /// </summary>
+        /// <param name="dte">The DTE2 instance representing the Visual Studio environment.</param>
+        /// <returns>A new instance of <see cref="NewItemTarget"/>.</returns>
         public static NewItemTarget Create(DTE2 dte)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             NewItemTarget item = null;
 
             // If a document is active, try to use the document's containing directory.
@@ -20,8 +30,8 @@ namespace MadsKristensen.AddAnyFile
                 item = CreateFromActiveDocument(dte);
             }
 
-            // If no document was selected, or we could not get a selected item from the document, then
-            // use the selected item in the Solution Explorer window.
+            // If no document was selected, or we could not get a selected item from the document,
+            // then use the selected item in the Solution Explorer window.
             if (item == null)
             {
                 item = CreateFromSolutionExplorerSelection(dte);
@@ -30,8 +40,16 @@ namespace MadsKristensen.AddAnyFile
             return item;
         }
 
+        /// <summary>
+        /// Creates a new instance of <see cref="NewItemTarget"/> based on the currently active document.
+        /// </summary>
+        /// <param name="dte">The DTE2 instance representing the Visual Studio environment.</param>
+        /// <returns>
+        /// A new instance of <see cref="NewItemTarget"/> or null if no valid target is found.
+        /// </returns>
         private static NewItemTarget CreateFromActiveDocument(DTE2 dte)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             string fileName = dte.ActiveDocument?.FullName;
             if (File.Exists(fileName))
             {
@@ -45,6 +63,14 @@ namespace MadsKristensen.AddAnyFile
             return null;
         }
 
+        /// <summary>
+        /// Creates a new instance of <see cref="NewItemTarget"/> based on the selected item in the
+        /// Solution Explorer.
+        /// </summary>
+        /// <param name="dte">The DTE2 instance representing the Visual Studio environment.</param>
+        /// <returns>
+        /// A new instance of <see cref="NewItemTarget"/> or null if no valid target is found.
+        /// </returns>
         private static NewItemTarget CreateFromSolutionExplorerSelection(DTE2 dte)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
@@ -79,8 +105,16 @@ namespace MadsKristensen.AddAnyFile
             return null;
         }
 
+        /// <summary>
+        /// Creates a new instance of <see cref="NewItemTarget"/> based on the specified project item.
+        /// </summary>
+        /// <param name="projectItem">The project item to base the target on.</param>
+        /// <returns>
+        /// A new instance of <see cref="NewItemTarget"/> or null if no valid target is found.
+        /// </returns>
         private static NewItemTarget CreateFromProjectItem(ProjectItem projectItem)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             if (projectItem.IsKind(Constants.vsProjectItemKindSolutionItems))
             {
                 return new NewItemTarget(
@@ -91,8 +125,8 @@ namespace MadsKristensen.AddAnyFile
             }
             else
             {
-                // The selected item needs a directory. This project item could be a virtual folder, so
-                // resolve it to a physical file or folder.
+                // The selected item needs a directory. This project item could be a virtual folder,
+                // so resolve it to a physical file or folder.
                 projectItem = ResolveToPhysicalProjectItem(projectItem);
                 string fileName = projectItem?.GetFileName();
 
@@ -101,13 +135,19 @@ namespace MadsKristensen.AddAnyFile
                     return null;
                 }
 
-                // If the file exists, then it must be a file and we can get the directory name from it. If
-                // the file does not exist, then it must be a directory, and the directory name is the file name.
+                // If the file exists, then it must be a file and we can get the directory name from
+                // it. If the file does not exist, then it must be a directory, and the directory
+                // name is the file name.
                 string directory = File.Exists(fileName) ? Path.GetDirectoryName(fileName) : fileName;
                 return new NewItemTarget(directory, projectItem.ContainingProject, projectItem, isSolutionOrSolutionFolder: false);
             }
         }
 
+        /// <summary>
+        /// Resolves a virtual project item to a physical project item.
+        /// </summary>
+        /// <param name="projectItem">The project item to resolve.</param>
+        /// <returns>The resolved physical project item or null if no physical item is found.</returns>
         private static ProjectItem ResolveToPhysicalProjectItem(ProjectItem projectItem)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
@@ -124,6 +164,11 @@ namespace MadsKristensen.AddAnyFile
             return projectItem;
         }
 
+        /// <summary>
+        /// Gets the full path to a solution folder.
+        /// </summary>
+        /// <param name="folder">The project representing the solution folder.</param>
+        /// <returns>The full path to the solution folder.</returns>
         private static string GetSolutionFolderPath(Project folder)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
@@ -144,6 +189,15 @@ namespace MadsKristensen.AddAnyFile
             return Path.Combine(new[] { solutionDirectory }.Concat(segments).ToArray());
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewItemTarget"/> class.
+        /// </summary>
+        /// <param name="directory">The target directory for the new item.</param>
+        /// <param name="project">The project associated with the target.</param>
+        /// <param name="projectItem">The project item associated with the target.</param>
+        /// <param name="isSolutionOrSolutionFolder">
+        /// A flag indicating if the target is a solution or solution folder.
+        /// </param>
         private NewItemTarget(string directory, Project project, ProjectItem projectItem, bool isSolutionOrSolutionFolder)
         {
             Directory = directory;
@@ -152,16 +206,34 @@ namespace MadsKristensen.AddAnyFile
             IsSolutionOrSolutionFolder = isSolutionOrSolutionFolder;
         }
 
+        /// <summary>
+        /// Gets the target directory for the new item.
+        /// </summary>
         public string Directory { get; }
 
+        /// <summary>
+        /// Gets the project associated with the target.
+        /// </summary>
         public Project Project { get; }
 
+        /// <summary>
+        /// Gets the project item associated with the target.
+        /// </summary>
         public ProjectItem ProjectItem { get; }
 
+        /// <summary>
+        /// Gets a value indicating whether the target is a solution or solution folder.
+        /// </summary>
         public bool IsSolutionOrSolutionFolder { get; }
 
+        /// <summary>
+        /// Gets a value indicating whether the target is a solution.
+        /// </summary>
         public bool IsSolution => IsSolutionOrSolutionFolder && Project == null;
 
+        /// <summary>
+        /// Gets a value indicating whether the target is a solution folder.
+        /// </summary>
         public bool IsSolutionFolder => IsSolutionOrSolutionFolder && Project != null;
     }
 }

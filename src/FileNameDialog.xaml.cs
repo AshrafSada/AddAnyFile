@@ -48,7 +48,7 @@ namespace MadsKristensen.AddAnyFile
             lblTip.Content = _tips[tipIndex];
         }
 
-        private void txtFileName_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void TxtFileName_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
             {

@@ -44,7 +44,7 @@
                  FontFamily="Leelawadee UI,Segoe UI"
                  FontSize="14"
                  FontWeight="Medium"
-                 PreviewKeyDown="txtFileName_PreviewKeyDown" Margin="17,64,0,0" />
+                 PreviewKeyDown="TxtFileName_PreviewKeyDown" Margin="17,64,0,0" />
 
         <Button x:Name="btnAddNew"
                 Grid.Column="2"

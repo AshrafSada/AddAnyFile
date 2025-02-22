@@ -126,6 +126,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Templates\.resx.txt" />
+    <Resource Include="Templates\.razor.txt" />
     <Content Include="Templates\gruntfile.js.txt">
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -202,7 +203,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MessagePack">
-      <Version>3.1.1</Version>
+      <Version>3.1.3</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.IO.Redist">
       <Version>6.1.0</Version>
@@ -217,7 +218,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="System.Text.Json">
-      <Version>9.0.0</Version>
+      <Version>9.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

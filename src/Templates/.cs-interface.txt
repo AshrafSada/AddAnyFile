@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace {namespace};
 
-public interface {itemname}
+public interface {itemName}
 {$
 }

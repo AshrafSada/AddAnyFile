@@ -32,6 +32,15 @@ namespace MadsKristensen.AddAnyFile
             _templateFiles.AddRange(Directory.GetFiles(_folder, "*" + _defaultExt, SearchOption.AllDirectories));
         }
 
+        /// <summary>
+        /// Asynchronously gets the template file path based on the provided project and file name.
+        /// </summary>
+        /// <param name="project">The project in which the file is being created.</param>
+        /// <param name="file">The name of the file for which a template is being sought.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation. The task result contains the path to
+        /// the matching template file, or null if no match is found.
+        /// </returns>
         public static async Task<string> GetTemplateFilePathAsync(Project project, string file)
         {
             var name = Path.GetFileName(file);
@@ -55,11 +64,11 @@ namespace MadsKristensen.AddAnyFile
 
             while (current != null)
             {
-                var tmplDir = Path.Combine(current.FullName, _templateDir);
+                var templateDirectory = Path.Combine(current.FullName, _templateDir);
 
-                if (Directory.Exists(tmplDir))
+                if (Directory.Exists(templateDirectory))
                 {
-                    dynaList.AddRange(Directory.GetFiles(tmplDir, "*" + _defaultExt, SearchOption.AllDirectories));
+                    dynaList.AddRange(Directory.GetFiles(templateDirectory, "*" + _defaultExt, SearchOption.AllDirectories));
                 }
 
                 current = current.Parent;
@@ -68,6 +77,13 @@ namespace MadsKristensen.AddAnyFile
             list.InsertRange(0, dynaList);
         }
 
+        /// <summary>
+        /// Gets the matching template file path based on the provided file name.
+        /// </summary>
+        /// <param name="project">The project in which the file is being created.</param>
+        /// <param name="templateFilePaths">A list of available template file paths.</param>
+        /// <param name="file">The name of the file for which a template is being sought.</param>
+        /// <returns>The path to the matching template file, or null if no match is found.</returns>
         private static string GetMatchingTemplateFromFileName(Project project, List<string> templateFilePaths, string file)
         {
             var extension = Path.GetExtension(file).ToLowerInvariant();
@@ -79,8 +95,8 @@ namespace MadsKristensen.AddAnyFile
 
             if (templateFilePaths.Any(directFileMatchingPredicate))
             {
-                var tmplFile = templateFilePaths.FirstOrDefault(directFileMatchingPredicate);
-                return Path.Combine(Path.GetDirectoryName(tmplFile), name + _defaultExt);//GetTemplate(name);
+                var matchedTemplateFile = templateFilePaths.FirstOrDefault(directFileMatchingPredicate);
+                return Path.Combine(Path.GetDirectoryName(matchedTemplateFile), name + _defaultExt);
             }
 
             // Look for convention matches
@@ -94,9 +110,9 @@ namespace MadsKristensen.AddAnyFile
             bool extensionMatchingPredicate(string path) => Path.GetFileName(path).Equals(extension + _defaultExt, StringComparison.OrdinalIgnoreCase) && File.Exists(path);
             if (templateFilePaths.Any(extensionMatchingPredicate))
             {
-                var tmplFile = templateFilePaths.FirstOrDefault(extensionMatchingPredicate);
-                var tmpl = AdjustForSpecific(project, safeName, extension);
-                return Path.Combine(Path.GetDirectoryName(tmplFile), tmpl + _defaultExt); //GetTemplate(tmpl);
+                var templateFile = templateFilePaths.FirstOrDefault(extensionMatchingPredicate);
+                var template = AdjustForSpecific(project, safeName, extension);
+                return Path.Combine(Path.GetDirectoryName(templateFile), template + _defaultExt);
             }
 
             return null;
@@ -124,8 +140,8 @@ namespace MadsKristensen.AddAnyFile
                 var content = await reader.ReadToEndAsync();
 
                 return content.Replace("{namespace}", ns)
-                           .Replace("{itemname}", name)
-                           .Replace("{mvcprojectnamespace}", mvcProjectControllerNs);
+                           .Replace("{itemName}", name)
+                           .Replace("{mvcProjectNamespace}", mvcProjectControllerNs);
             }
         }
 

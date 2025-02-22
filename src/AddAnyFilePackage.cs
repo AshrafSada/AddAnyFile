@@ -79,7 +79,7 @@ namespace MadsKristensen.AddAnyFile
 
         private static Encoding GetFileEncoding(string file)
         {
-            string[] noBom = { ".cmd", ".bat", ".json" };
+            string[] noBom = { ".cmd", ".bat", ".json", ".razor", ".zsh", ".ps1" };
             string ext = Path.GetExtension(file).ToLowerInvariant();
 
             if (noBom.Contains(ext))
@@ -95,6 +95,13 @@ namespace MadsKristensen.AddAnyFile
             return path.Split(new[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);
         }
 
+        /// <summary>
+        /// Parses the input string into an array of file paths.
+        /// </summary>
+        /// <param name="input">
+        /// A string containing file paths, possibly with extensions or folder paths.
+        /// </param>
+        /// <returns>An array of parsed file paths.</returns>
         private static string[] GetParsedInput(string input)
         {
             // var tests = new string[] { "file1.txt", "file1.txt, file2.txt", ".ignore",
@@ -212,7 +219,7 @@ namespace MadsKristensen.AddAnyFile
             } while (!string.IsNullOrEmpty(path));
         }
 
-        private async System.Threading.Tasks.Task AddFileAsync(string name, NewItemTarget target)
+        private async Task AddFileAsync(string name, NewItemTarget target)
         {
             await JoinableTaskFactory.SwitchToMainThreadAsync();
             FileInfo file;
@@ -288,6 +295,7 @@ namespace MadsKristensen.AddAnyFile
 
         private Project GetOrAddSolutionFolder(string name, NewItemTarget target)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             if (target.IsSolution && string.IsNullOrEmpty(name))
             {
                 // An empty solution folder name means we are not creating any solution folders for
