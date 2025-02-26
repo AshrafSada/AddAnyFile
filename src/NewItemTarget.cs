@@ -11,7 +11,7 @@ namespace MadsKristensen.AddAnyFile
     /// <summary>
     /// Represents the target location for creating a new item within a Visual Studio solution.
     /// </summary>
-    public class NewItemTarget
+    public sealed class NewItemTarget
     {
         /// <summary>
         /// Creates a new instance of <see cref="NewItemTarget"/> based on the current context in
