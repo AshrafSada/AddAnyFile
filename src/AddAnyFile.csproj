@@ -127,6 +127,10 @@
     </Content>
     <Resource Include="Templates\.resx.txt" />
     <Resource Include="Templates\.razor.txt" />
+    <Content Include="Templates\.xaml.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="Templates\gruntfile.js.txt">
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
