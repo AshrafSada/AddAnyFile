@@ -3,10 +3,10 @@
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                 x:Class="{namespace}.{itemName}"
                 Title="{itemName}">
-    <VericalStackLayout>
+    <VerticalStackLayout>
         <Label Text="{itemName} .NET MAUI Page!"
                VerticalOptions="Center"
                HorizontalOptions="Center" />
                $
-    </VericalStackLayout>
+    </VerticalStackLayout>
 </ContentPage>
