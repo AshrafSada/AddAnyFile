@@ -53,6 +53,8 @@ namespace MadsKristensen.AddAnyFile
 
             var templateFile = GetMatchingTemplateFromFileName(project, list, file);
 
+
+
             var template = await ReplaceTokensAsync(project, safeName, relative, templateFile);
             return NormalizeLineEndings(template);
         }

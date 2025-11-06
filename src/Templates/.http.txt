@@ -1,0 +1,26 @@
+﻿@RestApi_HostAddress = http://localhost:$
+
+### Get All
+GET {{RestApi_HostAddress}}/api/{itemName}/
+Accept: application/json
+
+### Get by Id
+GET {{RestApi_HostAddress}}/api/{itemName}/1
+Accept: application/json
+
+### Post
+POST {{RestApi_HostAddress}}/api/{itemName}/
+content-type: application/json
+
+{
+    "Name": "ABC"
+}
+
+### Update
+PUT {{RestApi_HostAddress}}/api/{itemName}/1
+content-type: application/json
+
+{
+    "Name": "ABC Updated"
+}
+
